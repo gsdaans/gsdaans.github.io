@@ -2,7 +2,7 @@
 <html>
 <body>
   <script>
-    var ws = new WebSocket('ws://http://ctf30.root-me.org/ws');
+    var ws = new WebSocket('wss://http://ctf30.root-me.org/ws');
     ws.onopen = function() {
       console.log("WebSocket connection opened successfully.");
       ws.send("READY");
